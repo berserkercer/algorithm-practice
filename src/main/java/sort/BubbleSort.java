@@ -23,6 +23,11 @@ public class BubbleSort {
                 }
             }
             System.out.println("第" + (i + 1) + "次排序（交换" + count + "次）: " + Arrays.toString(array));
+
+            // 无交换，则说明排序已完成
+            if (count == 0) {
+                break;
+            }
         }
     }
 
