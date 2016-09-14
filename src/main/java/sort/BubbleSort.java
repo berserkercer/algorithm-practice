@@ -1,5 +1,8 @@
 package sort;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 
 /**
@@ -8,6 +11,8 @@ import java.util.Arrays;
  * @author ChengJianLong
  */
 public class BubbleSort {
+    private static final Logger logger = LoggerFactory.getLogger(BubbleSort.class);
+
     public static void bubbleSort(int[] array) {
         if (array == null || array.length == 0) { return; }
 
@@ -22,7 +27,7 @@ public class BubbleSort {
                     ++count;
                 }
             }
-            System.out.println("第" + (i + 1) + "次排序（交换" + count + "次）: " + Arrays.toString(array));
+            logger.info("第{}次排序（交换{}次）: {}", i + 1, count, Arrays.toString(array));
 
             // 无交换，则说明排序已完成
             if (count == 0) {
@@ -34,9 +39,8 @@ public class BubbleSort {
     public static void test(int length, int range) {
         long start = System.currentTimeMillis();
         int[] array = GeneralRandomArray.init(length, range);
-        System.out.println("原始数组: " + Arrays.toString(array));
         bubbleSort(array);
-        System.out.println("冒泡排序结果: " + Arrays.toString(array));
-        System.out.println("用时: " + (System.currentTimeMillis() - start) + " ms");
+        logger.info("冒泡排序结果: {}", Arrays.toString(array));
+        logger.info("用时: {}ms", System.currentTimeMillis() - start);
     }
 }
