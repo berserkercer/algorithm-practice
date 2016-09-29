@@ -1,5 +1,6 @@
 package sort;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,12 +15,12 @@ public class BubbleSort {
     private static final Logger logger = LoggerFactory.getLogger(BubbleSort.class);
 
     public static void bubbleSort(int[] array) {
-        if (array == null || array.length == 0) { return; }
+        if (ArrayUtils.isEmpty(array)) { return; }
 
         int length = array.length;
         for (int i = 0; i < length - 1; ++i) {
             int count = 0;
-            for (int j = 0; j < length - i - 1; j++) {
+            for (int j = 0; j < length - i - 1; ++j) {
                 if (array[j] > array[j + 1]) {
                     array[j + 1] += array[j];
                     array[j] = array[j + 1] - array[j];
